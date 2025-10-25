@@ -6,12 +6,12 @@ routes.get("/", (req, res) => {
   try {
     productsController.getProducts((err, results) => {
       if (err) {
-        return res.status(400).json({ status: "Error", message: err.message });
+        return res.status(400).json({ STATUS: "Error", message: err.message });
       }
-      return res.status(200).json({ status: "OK", data: results });
+      return res.status(200).json({ STATUS: "OK", data: results });
     });
   } catch (err) {
-    return res.status(400).json({ status: "Error", message: err.message });
+    return res.status(400).json({ STATUS: "Error", message: err.message });
   }
 });
 routes.get("/:productId", (req, res) => {
@@ -20,12 +20,12 @@ routes.get("/:productId", (req, res) => {
 
     productsController.getProductById(productId, (err, results) => {
       if (err) {
-        return res.status(400).json({ status: "Error", message: err.message });
+        return res.status(400).json({ STATUS: "Error", message: err.message });
       }
-      return res.status(200).json({ status: "OK", data: results });
+      return res.status(200).json({ STATUS: "OK", data: results });
     });
   } catch (err) {
-    return res.status(400).json({ status: "Error", message: err.message });
+    return res.status(400).json({ STATUS: "Error", message: err.message });
   }
 });
 
@@ -39,12 +39,12 @@ routes.post("/", (req, res) => {
     };
     productsController.saveProductDetails(productDetails, (err, results) => {
       if (err) {
-        return res.status(400).json({ status: "Error", message: err.message });
+        return res.status(400).json({ STATUS: "Error", message: err.message });
       }
-      return res.status(201).json({ status: "OK", data: results });
+      return res.status(201).json({ STATUS: "OK", data: results });
     });
   } catch (err) {
-    return res.status(400).json({ status: "Error", message: err.message });
+    return res.status(400).json({ STATUS: "Error", message: err.message });
   }
 });
 
@@ -55,7 +55,7 @@ routes.delete("/:productId", (req, res) => {
     if (!productId) {
       return res
         .status(400)
-        .json({ status: "Error", message: "Product ID is required" });
+        .json({ STATUS: "Error", message: "Product ID is required" });
     }
     try {
       productsController.deleteProductById(
@@ -64,16 +64,16 @@ routes.delete("/:productId", (req, res) => {
           if (err) {
             return res
               .status(400)
-              .json({ status: "Error", message: err.message });
+              .json({ STATUS: "Error", message: err.message });
           }
-          return res.status(200).json({ status: "OK", data: results });
+          return res.status(200).json({ STATUS: "OK", data: results });
         }
       );
     } catch (err) {
-      return res.status(400).json({ status: "Error", message: err.message });
+      return res.status(400).json({ STATUS: "Error", message: err.message });
     }
   } catch (err) {
-    return res.status(400).json({ status: "Error", message: err.message });
+    return res.status(400).json({ STATUS: "Error", message: err.message });
   }
 });
 
